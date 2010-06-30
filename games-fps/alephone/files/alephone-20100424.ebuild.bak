@@ -1,0 +1,34 @@
+
+EAPI="2"
+inherit autotools games
+
+MY_P="AlephOne-${PV}"
+DESCRIPTION="An enhanced version of the game engine from the classic Mac game, Marathon"
+HOMEPAGE="http://source.bungie.org/"
+SRC_URI="mirror://sourceforge/marathon/${MY_P}.tar.bz2"
+
+LICENSE="GPL-2 BitstreamVera"
+SLOT="0"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+
+IUSE="opengl mad sndfile vorbis lua smpeg speex alsa ttf zzip png"
+
+RDEPEND="
+	alsa? ( media-libs/alsa-lib )
+	dev-libs/expat
+	lua? ( dev-lang/lua )
+	mad? ( media-libs/libmad )
+	png? ( media-libs/libpng )
+	media-libs/libsdl[video]
+	media-libs/sdl-image
+	media-libs/sdl-net
+	opengl? ( virtual/glu )
+	opengl? ( virtual/opengl )
+	sndfile? ( media-libs/libsndfile )
+	speex? ( media-libs/speex )
+	truetype? ( media-libs/sdl-ttf )
+	vorbis? ( media-libs/libvorbis )
+	zzip? ( dev-libs/zziplib )"
+
+DEPEND="${RDEPEND}
+	dev-libs/boost"

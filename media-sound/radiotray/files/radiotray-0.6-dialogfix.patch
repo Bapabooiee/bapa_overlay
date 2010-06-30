@@ -1,0 +1,19 @@
+--- src/BookmarkConfiguration.py.orig	2010-06-15 05:47:10.433784916 -0600
++++ src/BookmarkConfiguration.py	2010-06-15 05:47:10.433784916 -0600
+@@ -174,6 +174,7 @@
+                 )
+ 
+                 result = confirmation.run()
++                confirmation.hide()
+ 
+ 
+                 if result == -8:
+@@ -182,8 +183,6 @@
+ 
+                     # remove from gui
+                     model.remove(iter)
+-
+-                    confirmation.hide()
+             else:
+                  self.dataProvider.removeRadio(separatorFlag)
+                  # remove from gui
