@@ -2,6 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/x11-misc/xclip/xclip-0.12.ebuild,v 1.8 2010/01/10 18:35:21 fauli Exp $
 
+EAPI="3"
+inherit autotools
+
 DESCRIPTION="Command-line utility to read data from standard in and place it in an X selection"
 HOMEPAGE="http://sourceforge.net/projects/xclip/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
@@ -15,6 +18,10 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXmu"
 DEPEND="${RDEPEND}
 	x11-libs/libXt"
+
+src_prepare() {
+	epatch "${FILESDIR}/xclip-0.12-clipboard-default.patch"
+}
 
 src_install() {
 	emake DESTDIR="${D}" install || die

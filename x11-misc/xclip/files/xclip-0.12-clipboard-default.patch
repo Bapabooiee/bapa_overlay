@@ -1,0 +1,12 @@
+--- xclip.c.orig	2010-07-14 00:50:56.292792251 -0600
++++ xclip.c	2010-07-14 01:05:37.190163288 -0600
+@@ -139,6 +139,9 @@
+ static void
+ doOptSel(void)
+ {
++    /* make clipboard the default selection */
++    sseln = XA_CLIPBOARD(dpy);
++
+     /* set selection to work with */
+     if (XrmGetResource(opt_db, "xclip.selection", "Xclip.Selection", &rec_typ, &rec_val)
+ 	) {
