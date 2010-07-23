@@ -19,7 +19,7 @@ DEPEND="dev-lang/erlang"
 PROVIDE="virtual/httpd-basic virtual/httpd-cgi"
 
 src_install() {
-	make DESTDIR=${D} install || edie
+	emake DESTDIR=${D} install || die "emake install failed"
 	keepdir /var/log/yaws
 	rmdir ${D}var/lib/log/yaws
 	rmdir ${D}var/lib/log
@@ -30,7 +30,20 @@ src_install() {
 	dodoc ChangeLog LICENSE README
 }
 
+pkg_preinst() {
+	local CONF="${D}/etc/yaws/yaws.conf"
+
+	sed -i \
+		"s:/usr/var/log/yaws:/var/log/yaws:" \
+		${CONF}
+	
+#	if use amd64; then
+#		sed -i \
+#			"s:/lib/:/lib64/:" \
+#			${CONF}
+#	fi
+}
+
 pkg_postinst() {
-	einfo "An example YAWS configuration has been setup to run on"
-	einfo "Please edit /etc/yaws/yaws.conf to suit your needs."
+	einfo "Please make sure to edit /etc/yaws/yaws.conf to suit your needs."
 }
