@@ -1,0 +1,50 @@
+#!/sbin/runscript
+
+depend() {
+	need logger mongodb
+}
+
+start() {
+	if [ ! -e ${GRAYLOG2_CONF} ]; then
+		eerror "${GRAYLOG2_CONF} does not exist; cannot start ${SVCNAME}"
+		return 1
+	fi
+
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --background \
+		--stderr ${GRAYLOG2_LOG} \
+		--stdout ${GRAYLOG2_LOG} \
+		--pidfile ${GRAYLOG2_PID} \
+		--chdir ${GRAYLOG2_DIR} \
+		--exec ${GRAYLOG2_EXEC} -- ${GRAYLOG2_OPT}
+	
+	sleep 2
+
+	graylog2_test || return 1
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop \
+		--pidfile ${GRAYLOG2_PID}
+	
+	rm -f ${GRAYLOG2_PID} # just in case
+}
+
+graylog2_test() {
+	# Graylog2 only deletes its PID file if it hits a config error
+	if [ ! -e ${GRAYLOG2_PID} ]; then
+		eerror "Configuration error, check ${GRAYLOG2_CONF}"
+		return 1
+	fi
+	
+	local PID=`cat ${GRAYLOG2_PID}`
+
+	if [ ! -e /proc/${PID} ]; then
+		eerror "Something went wrong, check ${GRAYLOG2_LOG}"
+		rm -f ${GRAYLOG2_PID}
+		return 1
+	else
+		return 0
+	fi
+}
