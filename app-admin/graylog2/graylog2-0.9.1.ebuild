@@ -26,25 +26,25 @@ RDEPEND="dev-db/mongodb virtual/jdk"
 S="${WORKDIR}/${PN}-server-${PV}"
 
 MY_INSTALL="/usr/share/${PN}"
-MY_CONF="${D}/etc/graylog2.conf"
 
 src_install() { 
+	dodir /etc; insinto /etc
+	newins graylog2.conf.example graylog2.conf || die "installing conf failed"
+	fperms 660 /etc/graylog2.conf || die "fperms failed"
+
 	dodir ${MY_INSTALL} || die "dodir failed"
-	keepdir /var/log/graylog2
+	insinto ${MY_INSTALL} || die "insinto failed"
 
-	# Copy dist files
-	cp -r dist/{graylog2-server.jar,lib} "${D}/${MY_INSTALL}" || die "cp -r failed"
+	cd dist
+	doins graylog2-server.jar || die "installing jar failed"
+	doins -r lib || die "installing -r lib failed"
 
-	# Copy conf
-	dodir /etc
-	cp graylog2.conf.example ${MY_CONF} > /dev/null 2>&1 || die "conf copy failed"
-	chmod o-rwx ${MY_CONF} > /dev/null 2>&1 || die "chmod failed"
-
-	# Init files
 	newinitd "${FILESDIR}/${PN}.initd" ${PN} || die "newinitd failed"
 	newconfd "${FILESDIR}/${PN}.confd" ${PN} || die "newconfd failed"
 
-	dodoc dist/README.TXT build_date || die "dodoc failed"
+	dodoc README.TXT ../build_date || die "dodoc failed"
+
+	keepdir "/var/log/${PN}" || die "keepdir failed"
 }
 
 pkg_preinst() {
@@ -52,5 +52,5 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	einfo "Please make sure to edit /etc/graylog2.conf to your needs"
+	elog "Please make sure to edit /etc/graylog2.conf to your needs"
 }
