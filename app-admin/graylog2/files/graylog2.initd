@@ -18,7 +18,7 @@ start() {
 		--chdir ${GRAYLOG2_DIR} \
 		--exec ${GRAYLOG2_EXEC} -- ${GRAYLOG2_OPT}
 	
-	sleep 3
+	sleep 5
 
 	graylog2_test || return 1
 }
