@@ -23,6 +23,13 @@ DEPEND="x11-libs/wxGTK:2.8[X]
 	>=dev-libs/libxslt-1.1"
 RDEPEND="${DEPEND}"
 
+src_prepare() {
+	# Fix application icon path (bug #338843)
+	sed -i \
+		-e 's/pgAdmin3.png/pgadmin3.png/' \
+		pkg/pgadmin3.desktop || die "sed failed"
+}
+
 src_configure() {
 	econf \
 		--with-wx-version=2.8 \
