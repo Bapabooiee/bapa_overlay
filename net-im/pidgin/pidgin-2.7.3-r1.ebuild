@@ -9,12 +9,13 @@ inherit flag-o-matic eutils toolchain-funcs multilib perl-app gnome2 python auto
 
 DESCRIPTION="GTK Instant Messenger client"
 HOMEPAGE="http://pidgin.im/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
+	alternate-tray-icon? ( http://developer.pidgin.im/raw-attachment/ticket/6744/tray-new-im.png -> pidgin-2.7.3-alternate-tray-icon.png )"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 ~hppa ia64 ppc ppc64 sparc x86"
-IUSE="dbus debug doc eds gadu gnutls +gstreamer +gtk idn meanwhile"
+IUSE="alternate-tray-icon dbus debug doc eds gadu gnutls +gstreamer +gtk idn meanwhile"
 IUSE+=" networkmanager nls perl silc tcl tk spell qq sasl +startup-notification"
 IUSE+=" ncurses groupwise prediction python +xscreensaver zephyr zeroconf" # mono"
 
@@ -117,6 +118,13 @@ pkg_setup() {
 src_prepare() {
 	gnome2_src_prepare
 	epatch "${FILESDIR}"/${PN}-2.7.2-ldflags.patch
+
+	# Replace that enraging 'smiley' tray icon (http://developer.pidgin.im/ticket/6744)
+	if use alternate-tray-icon; then
+		elog "Replacing default tray icon"
+		cp "${DISTDIR}/pidgin-2.7.3-alternate-tray-icon.png" pidgin/pixmaps/tray/hicolor/22x22/status/pidgin-tray-pending.png
+	fi
+
 	eautoreconf
 
 }

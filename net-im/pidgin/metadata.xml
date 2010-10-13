@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+	<email>bapabooiee@gmail.com</email>
+	<name>Dean Matzkov</name>
+</maintainer>
+<use>
+	<flag name='alternate-tray-icon'>Replaces the default 'smiley' tray icon with a more sane one</flag>
+	<flag name='gadu'>Enable Gadu Gadu protocol support</flag>
+	<flag name='groupwise'>Enable Novell Groupwise protocol support</flag>
+	<flag name='gstreamer'>Enables voice and video sessions</flag>
+	<flag name='gtk'>Builds Pidgin, the GTK+ interface</flag>
+	<flag name='meanwhile'>Enable meanwhile support for Sametime protocol</flag>
+	<flag name='ncurses'>Build finch, console interface</flag>
+	<flag name='prediction'>Enable Contact Availability Prediction plugin</flag>
+	<flag name='python'>Build libgnt (GLib Ncurses Toolkit used by finch) with python scripting support</flag>
+	<flag name='qq'>Enable QQ protocol support</flag>
+	<flag name='silc'>Enable SILC protocol support</flag>
+	<flag name='xscreensaver'>Use X screensaver protocol extension to monitor idle/active status based on mouse/keyboard events</flag>
+	<flag name='zephyr'>Enable Zephyr protocol support</flag>
+</use>
+</pkgmetadata>
