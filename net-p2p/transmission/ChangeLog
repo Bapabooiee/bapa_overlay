@@ -1,0 +1,11 @@
+# ChangeLog for net-p2p/transmission
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*transmission-2.10 (13 Oct 2010)
+
+  13 Oct 2010; Dean Matzkov <bapabooiee@gmail.com>
+  +transmission-2.10.ebuild, +files/transmission-daemon.confd.1,
+  +files/transmission-daemon.initd.2:
+  Version bump
+
