@@ -89,6 +89,14 @@ src_install() {
 	dodoc Readme.txt "Release/Setup Files/TrueCrypt User Guide.pdf" || die
 	exeinto "/$(get_libdir)/rcscripts/addons"
 	newexe "${FILESDIR}/${PN}-stop.sh" "${PN}-stop.sh" || die
+
+	if use X; then
+		insinto /usr/share/pixmaps
+		newins Resources/Icons/TrueCrypt-48x48.xpm truecrypt.xpm || die
+
+		insinto /usr/share/applications
+		doins "${FILESDIR}/truecrypt.desktop" || die
+	fi
 }
 
 pkg_postinst() {
