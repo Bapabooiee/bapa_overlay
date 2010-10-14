@@ -4,11 +4,12 @@
 
 EAPI=2
 
-MY_P=${PN}-v${PV}
+MY_PN=danbooru-v7sh-grabber
+MY_P=${MY_PN}-v${PV}
 
 DESCRIPTION="POSIX shell script to download images from Danbooru and Gelbooru"
 HOMEPAGE="http://code.google.com/p/danbooru-v7sh-grabber"
-SRC_URI="http://${PN}.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="http://${MY_PN}.googlecode.com/files/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="WTFPL-2"
 SLOT="0"
@@ -19,7 +20,6 @@ S=${WORKDIR}/${MY_P}
 
 src_install() {
 	newbin grab.sh ${PN} || die
-	dosym ${PN} /usr/bin/dgrab || die
 }
 
 pkg_postinst() {
