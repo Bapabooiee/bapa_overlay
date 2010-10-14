@@ -1,0 +1,10 @@
+# ChangeLog for app-crypt/truecrypt
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*truecrypt-7.0a-r1 (14 Oct 2010)
+
+  14 Oct 2010; Dean Matzkov <bapabooiee@gmail.com>
+  +truecrypt-7.0a-r1.ebuild, +files/truecrypt-stop.sh:
+  Initial import
+
