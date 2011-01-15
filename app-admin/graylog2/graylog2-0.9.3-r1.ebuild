@@ -9,7 +9,7 @@ GL2_INSTALL=/usr/share/${PN}
 
 DESCRIPTION="Graylog2 system logger"
 HOMEPAGE="http://www.graylog2.org/"
-SRC_URI="http://github.com/downloads/lennartkoopmann/${MY_PN}/${MY_P}.tar.gz"
+SRC_URI="http://github.com/downloads/Graylog2/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

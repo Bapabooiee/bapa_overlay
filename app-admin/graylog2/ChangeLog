@@ -2,6 +2,12 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*graylog2-0.9.4 (15 Jan 2011)
+
+  15 Jan 2011; Dean Matzkov <bapabooiee@gmail.com> graylog2-0.9.3.ebuild,
+  graylog2-0.9.3-r1.ebuild, +graylog2-0.9.4.ebuild:
+  Version bump, and fixed download URI in all ebuilds.
+
 *graylog2-0.9.3-r1 (15 Jan 2011)
 
   15 Jan 2011; Dean Matzkov <bapabooiee@gmail.com> files/graylog2.initd,
