@@ -1,6 +1,17 @@
 # ChangeLog for app-admin/graylog2
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*graylog2-0.9.3-r1 (15 Jan 2011)
+
+  15 Jan 2011; Dean Matzkov <bapabooiee@gmail.com> files/graylog2.initd,
+  -graylog2-0.9.1.ebuild, -graylog2-0.9.2.ebuild, +graylog2-0.9.3-r1.ebuild,
+  +files/graylog2.initd-r1:
+  Removed older versions, and revised ebuild. Changes include:
+
+  * Removing dependency on MongoDB, because the server won't always be local.
+  * Revised /etc/init.d/graylog2.
+  * Removed need for /etc/conf.d/graylog2 file.
 
 *graylog2-0.9.3 (24 Dec 2010)
 

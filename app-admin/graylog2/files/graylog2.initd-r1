@@ -1,8 +1,8 @@
 #!/sbin/runscript
 
-depend() {
-	need logger mongodb
-}
+GRAYLOG2_CONF="/etc/graylog2.conf"
+GRAYLOG2_LOG="/var/log/graylog2.log"
+GRAYLOG2_PID="/tmp/graylog2.pid"
 
 start() {
 	if [ ! -e ${GRAYLOG2_CONF} ]; then
@@ -15,8 +15,8 @@ start() {
 		--stderr ${GRAYLOG2_LOG} \
 		--stdout ${GRAYLOG2_LOG} \
 		--pidfile ${GRAYLOG2_PID} \
-		--chdir ${GRAYLOG2_DIR} \
-		--exec ${GRAYLOG2_EXEC} -- ${GRAYLOG2_OPT}
+		--chdir /usr/share/graylog2 \
+		--exec java -- -jar graylog2-server.jar
 	
 	# There's no way to know if anything went wrong, so the only
 	# thing we can do is wait and see if it's running afterwards

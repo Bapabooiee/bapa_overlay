@@ -1,9 +1,9 @@
-EAPI="3"
+EAPI=2
 
 inherit eutils
 
 MY_PN=${PN}-server
-MY_P=${MY_PN}-${PV}
+MY_P=${MY_PN}-${PV}p1
 
 GL2_INSTALL=/usr/share/${PN}
 
@@ -16,8 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=""
-RDEPEND="dev-db/mongodb virtual/jdk"
+RDEPEND="virtual/jdk"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -27,21 +26,9 @@ src_install() {
 	fperms 660 /etc/graylog2.conf || die "fperms failed"
 
 	insinto ${GL2_INSTALL}
-
-	cd dist
 	doins graylog2-server.jar || die "installing jar failed"
-	doins -r lib || die "installing -r lib failed"
 
-	newinitd "${FILESDIR}/${PN}.initd" ${PN} || die "newinitd failed"
-	newconfd "${FILESDIR}/${PN}.confd" ${PN} || die "newconfd failed"
-
-	dodoc README.TXT ../build_date || die "dodoc failed"
-
-	keepdir /var/log/${PN} || die "keepdir failed"
-}
-
-pkg_preinst() {
-	dosed "s:CHANGEME:${GL2_INSTALL}:" "etc/conf.d/${PN}" || die "dosed failed"
+	newinitd "${FILESDIR}/${PN}.initd-r1" ${PN} || die "newinitd failed"
 }
 
 pkg_postinst() {
