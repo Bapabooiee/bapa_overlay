@@ -3,7 +3,7 @@ EAPI=2
 inherit eutils
 
 MY_PN=${PN}-server
-MY_P=${MY_PN}-${PV}
+MY_P=${MY_PN}-${PV/_/}
 
 GL2_INSTALL=/usr/share/${PN}
 
@@ -18,7 +18,7 @@ IUSE=""
 
 RDEPEND="virtual/jdk"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 src_install() {
 	insinto /etc
