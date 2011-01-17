@@ -1,0 +1,9 @@
+# ChangeLog for www-servers/yaws
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*yaws-1.89 (17 Jan 2011)
+
+  17 Jan 2011; Dean Matzkov (bapa) <bapabooiee@gmail.com> +yaws-1.89.ebuild:
+  Version bump
+
