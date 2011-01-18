@@ -1,0 +1,10 @@
+# ChangeLog for x11-plugins/imgur-integration
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*imgur-integration-9999 (18 Jan 2011)
+
+  18 Jan 2011; Dean Matzkov <bapabooiee@gmail.com>
+  +imgur-integration-9999.ebuild, +metadata.xml:
+  New WiP ebuild: x11-plugins/imgur-integration
+
