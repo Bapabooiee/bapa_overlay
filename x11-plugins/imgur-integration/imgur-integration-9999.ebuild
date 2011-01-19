@@ -15,12 +15,18 @@ fi
 
 DESCRIPTION="A command-line utility and eog plugin used to upload to Imgur"
 HOMEPAGE="https://github.com/tthurman/imgur-integration"
-LICENSE=""
+LICENSE="GPL-3"
 
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="eog"
 
-IUSE=""
+DEPEND="sys-apps/dbus
+	>=dev-libs/dbus-glib-0.88	
+	>=dev-libs/glib-2.24
+	eog? ( media-gfx/eog )
+	net-misc/curl"
+RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_P}
 
@@ -39,12 +45,23 @@ src_prepare() {
 	fi
 }
 
+src_configure() {
+	local myconf=""
+
+	! use eog && myconf="${myconf} --disable-eog"
+
+	econf \
+	    ${myconf}
+}
+
 src_install() {
 	emake install DESTDIR="${D}" || die "emake failed"
 	dodoc AUTHORS README || die "dodoc failed"
 }
 
 pkg_postinst() {
-	elog "Please note that in order to use the eog plugin, you have"
-	elog "to first enable it in [Edit -> Preferences -> Plugins]."
+	if use eog; then
+		elog "Please note that in order to use the eog plugin, you have"
+		elog "to first enable it in [Edit -> Preferences -> Plugins]."
+	fi
 }

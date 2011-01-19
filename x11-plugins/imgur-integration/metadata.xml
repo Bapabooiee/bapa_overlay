@@ -3,4 +3,7 @@
 <pkgmetadata>
 <herd>no-herd</herd>
 <maintainer><email>maintainer-wanted@gentoo.org</email></maintainer>
+<use>
+  <flag name="eog">Build the media-gfx/eog plugin</flag>
+</use>
 </pkgmetadata>
