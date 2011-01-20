@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  20 Jan 2011; Dean Matzkov (bapa) <bapabooiee@gmail.com>
+  imgur-integration-9999.ebuild:
+  Masked live version, since it's usually broken
+
 *imgur-integration-9999 (18 Jan 2011)
 
   18 Jan 2011; Dean Matzkov <bapabooiee@gmail.com>

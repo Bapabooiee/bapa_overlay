@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/tthurman/imgur-integration"
 LICENSE="GPL-3"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS=""
 IUSE="eog"
 
 DEPEND="sys-apps/dbus

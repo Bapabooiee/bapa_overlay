@@ -1,0 +1,3 @@
+# Dean Matzkov <bapabooiee@gmail.com> (20 Jan 2011)
+# Live version is usually broken
+=x11-plugins/imgur-integration-9999
