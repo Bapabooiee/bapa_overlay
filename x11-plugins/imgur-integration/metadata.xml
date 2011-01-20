@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>no-herd</herd>
-<maintainer><email>maintainer-wanted@gentoo.org</email></maintainer>
+<maintainer><email>bapabooiee@gmail.com</email></maintainer>
 <use>
   <flag name="eog">Build the media-gfx/eog plugin</flag>
 </use>
