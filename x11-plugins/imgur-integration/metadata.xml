@@ -4,6 +4,6 @@
 <herd>no-herd</herd>
 <maintainer><email>bapabooiee@gmail.com</email></maintainer>
 <use>
-  <flag name="eog">Build the media-gfx/eog plugin</flag>
+  <flag name="eog">Build an imgur upload plugin for <pkg>media-gfx/eog</pkg></flag>
 </use>
 </pkgmetadata>
