@@ -4,8 +4,7 @@
 
 EAPI=2
 
-MY_PN=imgur
-MY_P=${MY_PN}-${PV}
+MY_P=imgur-${PV}
 
 if [[ ${PV} == "9999" ]]; then
 	inherit git autotools
@@ -15,7 +14,7 @@ else
 	SRC_URI="http://spectrum.myriadcolours.com/~marnanel/${PN}/${MY_P}.tar.gz"
 fi
 
-DESCRIPTION="A command-line utility & dbus service used to upload to imgur.com"
+DESCRIPTION="A command-line utility and media-gfx/eog plugin for uploading to imgur.com"
 HOMEPAGE="https://github.com/tthurman/imgur-integration"
 LICENSE="GPL-3"
 
@@ -23,12 +22,13 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="eog"
 
-DEPEND="sys-apps/dbus
-	>=dev-libs/dbus-glib-0.88	
+RDEPEND="sys-apps/dbus
+	dev-libs/dbus-glib
 	>=dev-libs/glib-2.24
-	eog? ( media-gfx/eog )
-	net-misc/curl"
-RDEPEND="${DEPEND}"
+	net-misc/curl
+	eog? ( media-gfx/eog )"
+DEPEND="${RDEPEND}
+	dev-util/pkgconfig"
 
 S=${WORKDIR}/${MY_P}
 
@@ -47,8 +47,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		$(use_enable eog)
+	econf $(use_enable eog)
 }
 
 src_install() {
