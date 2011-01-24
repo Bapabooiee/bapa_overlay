@@ -18,10 +18,10 @@ HOMEPAGE="http://rjb.rubyforge.org/"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="examples"
 
 RDEPEND="virtual/jdk"
-DEPEND="virtual/jdk"
+DEPEND="${RDEPEND}"
 
 each_ruby_configure() {
 	export JAVA_HOME=/etc/java-config-2/current-system-vm # <-- HACK !
@@ -38,4 +38,8 @@ each_ruby_install() {
 	local dest="${D}/$(ruby_fakegem_gemsdir)/gems/${P}"
 
 	cp ext/*.so "${dest}"/lib || die "copying lib failed"
+
+	if use examples; then
+		cp -r samples "${dest}" || die "copying samples failed"
+	fi
 }
