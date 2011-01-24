@@ -21,10 +21,11 @@ KEYWORDS="~amd64 ~x86"
 IUSE="examples"
 
 RDEPEND="virtual/jdk"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-java/java-config"
 
 each_ruby_configure() {
-	export JAVA_HOME=/etc/java-config-2/current-system-vm # <-- HACK !
+	export JAVA_HOME=$(java-config-2 -O) # <-- (still a) HACK !
 	${RUBY} -C ext extconf.rb || die "extconf.rb failed"
 }
 
