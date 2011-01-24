@@ -1,3 +1,7 @@
 # Dean Matzkov <bapabooiee@gmail.com> (20 Jan 2011)
 # Live version is usually broken
 =x11-plugins/imgur-integration-9999
+
+# Dean Matzkov <bapabooiee@gmail.com> (23 Jan 2011)
+# Still a work-in-progress. Will unmask when complete.
+=app-admin/graylog2-0.9.4_p1-r1
