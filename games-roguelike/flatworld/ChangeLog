@@ -1,0 +1,11 @@
+# ChangeLog for games-roguelike/flatworld
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*flatworld-9999 (24 Jan 2011)
+*flatworld-2010.09.07 (24 Jan 2011)
+
+  24 Jan 2011; Dean Matzkov <bapabooiee@gmail.com>
+  +flatworld-2010.09.07.ebuild, +flatworld-9999.ebuild:
+  Minibill is awesome-sauce.
+
