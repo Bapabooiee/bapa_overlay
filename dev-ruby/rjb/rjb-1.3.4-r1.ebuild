@@ -6,7 +6,7 @@ EAPI=2
 
 USE_RUBY="ruby18 ruby19"
 
-RUBY_FAKEGEM_EXTRADOC="readme.txt readme.sj ChangeLog"
+RUBY_FAKEGEM_EXTRADOC="readme.txt ChangeLog"
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_TASK_TEST=""
 
@@ -38,5 +38,4 @@ each_ruby_install() {
 	local dest="${D}/$(ruby_fakegem_gemsdir)/gems/${P}"
 
 	cp ext/*.so "${dest}"/lib || die "copying lib failed"
-	cp -r data samples test "${dest}" || die "cp -r failed"
 }
