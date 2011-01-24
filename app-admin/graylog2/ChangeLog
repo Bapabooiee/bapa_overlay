@@ -2,6 +2,12 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  24 Jan 2011; Dean Matzkov (bapa) <bapabooiee@gmail.com> +metadata.xml,
+  +files/graylog2.initd-r2, +graylog2-0.9.4_p1-r1.ebuild:
+  Tweaked the description and post-install message; created a `local-mongodb'
+  USE flag to signify a local MongoDB installation is intended; polished-up the
+  init script; changed configuration file's default permissions.
+
 *graylog2-0.9.4_p1 (16 Jan 2011)
 
   16 Jan 2011; Dean Matzkov <bapabooiee@gmail.com> graylog2-0.9.4.ebuild,

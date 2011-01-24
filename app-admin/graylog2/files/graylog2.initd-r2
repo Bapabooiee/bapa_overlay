@@ -18,7 +18,7 @@ start() {
 		return 1
 	fi
 
-	ebegin "Starting Graylog2"
+	ebegin "Starting ${SVCNAME}"
 	start-stop-daemon --start --background \
 		--stderr ${GRAYLOG2_LOG} \
 		--stdout ${GRAYLOG2_LOG} \
@@ -34,11 +34,13 @@ start() {
 }
 
 stop() {
-	ebegin "Stopping Graylog2"
+	ebegin "Stopping ${SVCNAME}"
 	start-stop-daemon --stop \
 		--pidfile ${GRAYLOG2_PID}
 	
 	eend ${?}
+
+	_removepid # just in case
 }
 
 graylog2_test() {

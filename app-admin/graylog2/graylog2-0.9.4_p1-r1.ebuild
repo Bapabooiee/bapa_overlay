@@ -10,9 +10,11 @@ SRC_URI="http://github.com/downloads/Graylog2/${MY_PN}/${MY_P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="local-mongodb"
 
-RDEPEND="virtual/jdk"
+RDEPEND="
+	virtual/jdk
+	local-mongodb? ( dev-db/mongodb )"
 
 S=${WORKDIR}/${MY_P}
 
@@ -25,10 +27,19 @@ src_install() {
 	doins graylog2-server.jar || die "installing jar failed"
 
 	newinitd "${FILESDIR}/${PN}.initd-r2" ${PN} || die "newinitd failed"
+
+	if use local-mongodb; then
+		sed -i \
+			-e '/after logger/ a\\tneed mongodb' \
+			"${D}"/etc/init.d/${PN} || die "sed failed"
+
+		einfo "The \`local-mongodb' USE flag is set; a dependency for"
+		einfo "MongoDB has been set in the init script."
+	fi
 }
 
 pkg_postinst() {
-	elog "Please make sure to edit /etc/graylog2.conf to your needs"
-	elog
-	elog "Please remember to configure your system lo"
+	elog "Please note that graylog2 isn't a replacement for loggers"
+	elog "such as syslog-ng or rsyslog. It listens on port 514, and"
+	elog "forwards logs to a MongoDB database."
 }

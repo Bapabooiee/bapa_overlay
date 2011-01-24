@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer><email>bapabooiee@gmail.com</email></maintainer>
+<use>
+	<flag name="local-mongodb">Use this flag if you intend to use <pkg>dev-db/mongodb</pkg> locally on your system</flag>
+</use>
+</pkgmetadata>
