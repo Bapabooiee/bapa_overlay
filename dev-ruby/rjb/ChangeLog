@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  26 Jan 2011; Dean Matzkov <bapa@gentoo.org> rjb-1.3.4-r2.ebuild:
+  The 'data' directory is now installed again; turns out it was needed.
+
 *rjb-1.3.4-r2 (26 Jan 2011)
 
   26 Jan 2011; Dean Matzkov <bapabooiee@gmail.com> +rjb-1.3.4-r2.ebuild:

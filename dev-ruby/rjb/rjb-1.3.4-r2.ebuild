@@ -38,9 +38,12 @@ each_ruby_compile() {
 each_ruby_install() {
 	each_fakegem_install
 
-	ruby_fakegem_newins ext/rjbcore.so lib/rjbcore.so || die "installing lib failed"
+	# currently no elegant way to do this, bug #352765
+	ruby_fakegem_newins ext/rjbcore.so lib/rjbcore.so
+
+	ruby_fakegem_doins -r data
 	
 	if use examples; then
-		ruby_fakegem_doins -r samples || die "copying samples failed"
+		ruby_fakegem_doins -r samples
 	fi
 }
