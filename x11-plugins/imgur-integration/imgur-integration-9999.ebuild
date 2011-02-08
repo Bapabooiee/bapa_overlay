@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=2
+EAPI=3
 
 MY_P=imgur-${PV}
 
@@ -11,7 +11,7 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/tthurman/imgur-integration.git"
 	SRC_URI=""
 else
-	SRC_URI="http://spectrum.myriadcolours.com/~marnanel/${PN}/${MY_P}.tar.gz"
+	SRC_URI="http://www.chiark.greenend.org.uk/~tthurman/imgur/${MY_P}.tar.gz"
 fi
 
 DESCRIPTION="A command-line utility and media-gfx/eog plugin for uploading to imgur.com"
@@ -47,12 +47,15 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable eog)
+	econf \
+		--disable-libsocialweb \
+		--disable-libsharing \
+		$(use_enable eog)
 }
 
 src_install() {
 	emake install DESTDIR="${D}" || die "emake failed"
-	dodoc AUTHORS README || die "dodoc failed"
+	dodoc AUTHORS NEWS README || die "dodoc failed"
 }
 
 pkg_postinst() {
