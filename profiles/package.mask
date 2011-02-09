@@ -9,3 +9,7 @@
 # Dean Matzkov <bapabooiee@gmail.com> (08 Feb 2011)
 # Works, but needs testing
 x11-plugins/launchy
+
+# Dean Matzkov <bapabooiee@gmail.com> (08 Feb 2011)
+# Still very-much a work-in-progress
+www-apps/danbooru

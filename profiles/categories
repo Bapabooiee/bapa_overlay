@@ -2,5 +2,6 @@ app-admin
 dev-erlang
 games-roguelike
 sys-fs
+www-apps
 www-servers
 x11-plugins
