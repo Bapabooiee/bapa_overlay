@@ -1,0 +1,9 @@
+# ChangeLog for www-apps/subsonic
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*subsonic-4.4 (09 Feb 2011)
+
+  09 Feb 2011; Dean Matzkov <bapabooiee@gmail.com> +subsonic-4.4.ebuild:
+  Another big, dumb, hacky ebuild.
+
