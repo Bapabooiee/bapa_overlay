@@ -7,7 +7,7 @@ MY_P=${MY_PN}-${PV/_/}
 
 GL2_INSTALL=/usr/share/${PN}
 
-DESCRIPTION="Graylog2 system logger"
+DESCRIPTION="Daemon that forwards system logs to MongoDB databases"
 HOMEPAGE="http://www.graylog2.org/"
 SRC_URI="http://github.com/downloads/Graylog2/${MY_PN}/${MY_P}.tar.gz"
 
@@ -16,9 +16,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="virtual/jdk"
+DEPEND="virtual/jdk"
+RDEPEND="virtual/jre"
 
-S="${WORKDIR}/${MY_P}"
+S=${WORKDIR}/${MY_P}
 
 src_install() {
 	insinto /etc

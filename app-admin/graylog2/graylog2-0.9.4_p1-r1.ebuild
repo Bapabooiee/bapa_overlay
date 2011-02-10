@@ -1,5 +1,7 @@
 EAPI=2
 
+inherit eutils
+
 MY_PN=${PN}-server
 MY_P=${MY_PN}-${PV/_/}
 
@@ -12,8 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="local-mongodb"
 
-RDEPEND="
-	virtual/jdk
+DEPEND="virtual/jdk"
+RDEPEND="virtual/jre 
 	local-mongodb? ( dev-db/mongodb )"
 
 S=${WORKDIR}/${MY_P}

@@ -1,9 +1,0 @@
-GRAYLOG2_DIR="CHANGEME"
-GRAYLOG2_LOG="/var/log/graylog2/graylog2.log"
-
-GRAYLOG2_EXEC="java"
-GRAYLOG2_OPT="-jar graylog2-server.jar"
-
-# Don't change the below variables; they're currently hard-coded into Graylog2.
-GRAYLOG2_CONF="/etc/graylog2.conf"
-GRAYLOG2_PID="/tmp/graylog2.pid"
