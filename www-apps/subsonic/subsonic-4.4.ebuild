@@ -26,6 +26,18 @@ SUBSONIC_DIR="/var/subsonic"
 
 S=${WORKDIR}
 
+pkg_setup() {
+	java-pkg-2_pkg_setup
+
+	echo
+	ewarn "If this is your first time emerging ${PN}, you"
+	ewarn "might have to wait for Maven to download some extra"
+	ewarn "support files."
+	ewarn
+	ewarn "It could take a while, so please be patient."
+	echo
+}
+
 src_prepare() {
 	java-pkg-2_src_prepare
 	mv subsonic-main/{"Getting Started",getting_started}.html || die "mv html failed"
@@ -63,13 +75,12 @@ pkg_postinst() {
 				cp /usr/share/${PN}/webapps/${PN}.war ${tomcatdir} || die "cp tomcat.war failed"
 				chown tomcat:tomcat ${tomcatdir}/${PN}.war || die "chown tomcat.war failed"
 
-				echo ""
+				echo
 				elog "If everything went smoothly, you should now be able to point"
 				elog "your browser to http://localhost:8080/subsonic."
 			else
-				echo ""
+				echo
 				elog "It seems ${PN} is already deployed; not copying ${PN}.war"
-				echo ""
 			fi
 		else
 			elog "${SUBSONIC_DIR} exists; not touching anything."
@@ -77,6 +88,7 @@ pkg_postinst() {
 		fi
 	fi
 
+	echo
 	elog "Please note that ${SUBSONIC_DIR} must exist and be owned by"
 	elog "the server user (eg, tomcat) in order for Subsonic to work."
 }
