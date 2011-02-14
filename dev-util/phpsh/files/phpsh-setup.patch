@@ -1,0 +1,36 @@
+diff --git a/setup.py b/setup.py
+index f0b4697..42c8e14 100644
+--- a/setup.py
++++ b/setup.py
+@@ -13,11 +13,7 @@ if len(sys.argv) > 1 and sys.argv[1] == "build":
+     p = Popen(["make", "-C", make_dir])
+     os.waitpid(p.pid, 0)
+ 
+-# something better than this?
+-if os.getenv("USER") == "root":
+-    config_dir = "/etc/phpsh"
+-else:
+-    config_dir = os.getenv("HOME") + "/.phpsh"
++config_dir = "/etc/phpsh"
+ 
+ setup(
+     name="phpsh",
+@@ -29,9 +25,6 @@ setup(
+     packages=["phpsh"],
+     package_dir={"phpsh": "src"},
+     package_data={"phpsh": ["*.php", "*.el",
+-                            "xdebug-clients/geben/README",
+-                            "xdebug-clients/geben/LICENSE",
+-                            "xdebug-clients/geben/Makefile",
+                             "xdebug-clients/geben/geben.el",
+                             "xdebug-clients/geben/geben.elc",
+                             "xdebug-clients/geben/help",
+@@ -39,7 +32,7 @@ setup(
+     scripts=["src/phpsh", "src/dbgp-phpsh.py"],
+     data_files=[
+         (config_dir, ["src/rc.php", "src/php_manual.db", "src/config.sample"]),
+-        ("man/man1", ["src/doc/phpsh.1"]),
++        ("share/man/man1", ["src/doc/phpsh.1"]),
+     ],
+     requires=["pysqlite", "readline"],
+ )
