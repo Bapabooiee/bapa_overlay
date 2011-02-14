@@ -37,6 +37,18 @@ install_resizer() {
 	dosym "${mylibdir}"/${myresizer}.so "${MY_HTDOCSDIR}"/${myresizerlib} || die "dosym failed"
 }
 
+install_examples() {
+	local exampledir=/usr/share/doc/${PF}/config
+
+	mkdir -p "${D}"/${exampledir}
+	insinto ${exampledir}
+
+	for i in config/{database.yml,local_config.rb}; do
+		doins $i.example || die "doins doc failed"
+		mv $i.example $i || die "mv doc failed"
+	done
+}
+
 src_prepare() {
 	#rm -rf tmp components
 	rm -f ${myresizerlib}
@@ -54,6 +66,7 @@ src_install() {
 	webapp_src_preinst
 
 	dodoc INSTALL{,.debian,.freebsd} || die "dodoc failed"
+	install_examples
 
 	install_resizer
 
@@ -68,10 +81,12 @@ src_install() {
 		vendor \
 		Rakefile || die "doins failed"
 
+
 	webapp_serverowned -R "${MY_HTDOCSDIR}"/public/data
 	webapp_configfile "${MY_HTDOCSDIR}"/config
-
 	webapp_sqlscript postgres "${D}/${MY_HTDOCSDIR}"/db/postgres.sql
+
+	webapp_postinst_txt en "${FILESDIR}"/postinstall-en.txt
 
 	webapp_src_install
 }
