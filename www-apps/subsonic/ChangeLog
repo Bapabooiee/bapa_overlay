@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  14 Feb 2011; Dean Matzkov <bapabooiee@gmail.com> subsonic-4.4.ebuild:
+  Due to the hackiness of Maven in Portage, added a warning to let the user
+  know "userpriv usersandbox" must be in FEATURES. Also hard-coded to use mvn-2.2.
+
   14 Feb 2011; Dean Matzkov <bapabooiee@gmail.com> subsonic-4.4.ebuild,
   metadata.xml:
   Nuked the tomcat-deploy USE flag, since anyone who's going to try to deploy

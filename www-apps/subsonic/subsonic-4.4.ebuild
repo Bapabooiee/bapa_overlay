@@ -35,10 +35,14 @@ pkg_setup() {
 	ewarn
 	ewarn "It could take a while, so please be patient."
 	echo
+	ewarn "And due to the sad state of Maven in Portage, you will also"
+	ewarn "need to set \"userpriv usersandbox\" in FEATURES in order"
+	ewarn "for the build to work. See FEATURES in man(5) make.conf."
+	echo
 }
 
 src_compile() {
-	mvn install -DskipTests || die "mvn failed"
+	mvn-2.2 install -DskipTests || die "mvn failed"
 }
 
 src_install() {
