@@ -3,8 +3,4 @@
 <pkgmetadata>
 <herd>no-herd</herd>
 <maintainer><email>bapabooiee@gmail.com</email></maintainer>
-<use>
-<flag name='tomcat-deploy'>Creates a dependency on <pkg>www-servers/tomcat</pkg>,
-	and then attempts to automatically deploy Subsonic</flag>
-</use>
 </pkgmetadata>

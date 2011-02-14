@@ -2,6 +2,11 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  14 Feb 2011; Dean Matzkov <bapabooiee@gmail.com> subsonic-4.4.ebuild,
+  metadata.xml:
+  Nuked the tomcat-deploy USE flag, since anyone who's going to try to deploy
+  Subsonic probably already knows what they're doing. Also some misc cleanup.
+
   09 Feb 2011; Dean Matzkov <bapabooiee@gmail.com> subsonic-4.4.ebuild,
   +metadata.xml:
   Created tomcat-deploy USE flag, which attempts to automatically deploy
