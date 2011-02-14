@@ -12,37 +12,42 @@ else
 	ESVN_REPO_URI="svn://donmai.us/danbooru/tags/${P}"
 fi
 
-inherit eutils subversion webapp
+inherit eutils multilib subversion webapp
 
 DESCRIPTION="A taggable image board with many advanced features"
-HOMEPAGE="http://trac.donmai.us/"
+HOMEPAGE="http://danbooru.donmai.us/ http://trac.donmai.us/"
 SRC_URI=""
 
 LICENSE="as-is"
-KEYWORDS="amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
 
-my_resizer=lib/danbooru_image_resizer
+myresizer=danbooru_image_resizer
+myresizerlib=lib/${myresizer}/${myresizer}.so
 
-src_unpack() {
-	subversion_src_unpack
-	#ruby-ng_src_unpack
+install_resizer() {
+	local mylibdir=${D}/usr/$(get_libdir)/${PN}/${PV}
+
+	mkdir -p ${mylibdir} || die "mkdir failed"
+	cp ${myresizerlib} "${mylibdir}" || die "cp image_resizer failed"
+	rm -rf lib/${myresizer}/* || die "rm -rf failed"
+	dosym "${mylibdir}"/${myresizer}.so "${MY_HTDOCSDIR}"/${myresizerlib} || die "dosym failed"
 }
 
 src_prepare() {
 	#rm -rf tmp components
-	rm -f ${my_resizer}/*.so
+	rm -f ${myresizerlib}
 }
 
 src_configure() {
-	ruby -C ${my_resizer} extconf.rb || die "extconf.rb failed"
+	ruby -C lib/${myresizer} extconf.rb || die "extconf.rb failed"
 }
 
 src_compile() {
-	emake -C ${my_resizer} || die "emake failed"
+	emake -C lib/${myresizer} || die "emake failed"
 }
 
 src_install() {
@@ -50,10 +55,9 @@ src_install() {
 
 	dodoc INSTALL{,.debian,.freebsd} || die "dodoc failed"
 
-	find ${my_resizer} -type f ! -name '*.so' -delete || die "find -delete failed"
+	install_resizer
 
 	insinto "${MY_HTDOCSDIR}"
-
 	doins -r \
 		app \
 		config \
@@ -64,15 +68,10 @@ src_install() {
 		vendor \
 		Rakefile || die "doins failed"
 
-	
 	webapp_serverowned -R "${MY_HTDOCSDIR}"/public/data
-	webapp_serverowned -R "${MY_HTDOCSDIR}"/config
 	webapp_configfile "${MY_HTDOCSDIR}"/config
 
 	webapp_sqlscript postgres "${D}/${MY_HTDOCSDIR}"/db/postgres.sql
 
 	webapp_src_install
 }
-
-
-
