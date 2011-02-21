@@ -1,0 +1,11 @@
+diff -uNr html2ps-1.0b5.orig/html2ps html2ps-1.0b5/html2ps
+--- html2ps-1.0b5.orig/html2ps	2005-12-10 17:03:15.000000000 -0200
++++ html2ps-1.0b5/html2ps	2005-12-12 11:03:15.000000000 -0200
+@@ -1,6 +1,4 @@
+-: # Use perl
+-eval 'exec perl -S $0 "$@"'
+-  if $running_under_some_shell;
++#! /usr/bin/perl
+ 
+ # This is html2ps version 1.0 beta5, an HTML-to-PostScript converter.
+ #   Copyright (C) 1995-2005 Jan Karrman.

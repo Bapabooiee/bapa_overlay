@@ -25,3 +25,7 @@ dev-util/phpsh
 # Dean Matzkov <bapabooiee@gmail.com> (16 Feb 2011)
 # Yet another ebuild that's a work-in-progress
 dev-util/google-web-toolkit
+
+# Dean Matzkov <bapabooiee@gmail.com> (21 Feb 2011)
+# Thoroughly un-tested, and probably buggy
+app-text/html2ps

@@ -1,0 +1,54 @@
+diff -uNr html2ps-1.0b5.orig/html2ps html2ps-1.0b5/html2ps
+--- html2ps-1.0b5.orig/html2ps	2005-12-10 17:03:15.000000000 -0200
++++ html2ps-1.0b5/html2ps	2005-12-12 10:55:39.000000000 -0200
+@@ -26,8 +26,8 @@
+ # Set the name of the global configuration file. See the installation notes
+ # and manual page for more details on configuration files.
+ 
+-$globrc='/opt/misc/lib/html2ps/html2psrc';
+-$ug='/opt/misc/lib/html2ps/html2ps.html';
++$globrc='/etc/html2psrc';
++$ug='/usr/share/doc/html2ps.html';
+ 
+ $conf=<<'EOR';
+ @html2ps {
+@@ -480,6 +480,17 @@
+ &pagedef;
+ ($pagew,$pageh)=split /\s+/, $AT_page{'size'} if(defined $AT_page{'size'});
+ 
++# try autoconfiguration (basing on paths known from packages)
++eval "require Image::Magick"; $package{'PerlMagick'}=!$@;
++$package{'ImageMagick'} = ( -x "/usr/bin/mogrify" );
++$package{'pbmplus'} = ( -x "/usr/bin/giftoppm" );
++$package{'netpbm'} = ( -x "/usr/bin/giftopnm" );
++$package{'djpeg'} = ( -x "/usr/bin/djpeg" );
++$package{'Ghostscript'} = ( -x "/usr/bin/gs" );
++$package{'TeX'} = ( -x "/usr/bin/tex" );
++$package{'dvips'} = ( -x "/usr/bin/dvips" );
++eval "require LWP::UserAgent"; $package{'libwww-perl'}=!$@;
++
+ require Image::Magick if($package{'PerlMagick'});
+ $geturl=$package{'geturl'};
+ $ulanch="f";
+diff -uNr html2ps-1.0b5.orig/html2psrc html2ps-1.0b5/html2psrc
+--- html2ps-1.0b5.orig/html2psrc	1969-12-31 21:00:00.000000000 -0300
++++ html2ps-1.0b5/html2psrc	2005-12-12 10:56:30.000000000 -0200
+@@ -0,0 +1,18 @@
++/* Global configuration file for html2ps */
++
++@html2ps {
++  package {
++    path: "/usr/X11R6/bin:/usr/bin";
++  }
++  paper {
++    type: A4;
++  }
++  hyphenation {
++    en {
++      file: "/usr/share/texmf/tex/generic/hyphen/hyphen.tex";
++    }
++    pl {
++      file: "/usr/share/texmf/tex/generic/hyphen/plhyph.tex";
++    }
++  }
++}

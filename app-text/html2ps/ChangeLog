@@ -1,0 +1,11 @@
+# ChangeLog for app-text/html2ps
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*html2ps-1.0_beta5 (21 Feb 2011)
+
+  21 Feb 2011; Dean Matzkov <bapabooiee@gmail.com>
+  +html2ps-1.0_beta5.ebuild, +files/html2ps-1.0_beta5-conf.patch,
+  +files/html2ps-1.0_beta5-perl.patch:
+  New ebuild, mostly stolen from bug #7210.
+
