@@ -27,10 +27,6 @@ dev-util/phpsh
 dev-util/google-web-toolkit
 
 # Dean Matzkov <bapabooiee@gmail.com> (21 Feb 2011)
-# Thoroughly un-tested, and probably buggy
-app-text/html2ps
-
-# Dean Matzkov <bapabooiee@gmail.com> (21 Feb 2011)
 # Mostly un-tested
 dev-erlang/faxien-launcher
 
