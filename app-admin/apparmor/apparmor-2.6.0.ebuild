@@ -17,17 +17,14 @@ SRC_URI="http://launchpad.net/${PN}/${MY_VER}/${PV}/+download/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-#IUSE="nls pam python ruby"
 IUSE="nls pam"
+#IUSE="nls pam python ruby"
 
-# TODO: Add deps
-DEPEND=""
-RDEPEND="${DEPEND}"
+# TODO: Add dependencies
 
 CONFIG_CHECK="~SECURITY_APPARMOR"
 MAKEOPTS="${MAKEOPS} -j1" # explodes with parallel make
 
-# TODO: Figure out how to avoid all this boilerplate code
 pkg_setup() {
 	perl-module_pkg_setup
 	linux-info_pkg_setup
@@ -47,9 +44,9 @@ src_configure() {
 }
 
 src_compile() {
-	cd "${S}"/libraries/libapparmor ; emake
-	cd "${S}"/utils ; emake
-	cd "${S}"/parser ; emake main docs # avoid running tests
+	emake -C "${S}"/libraries/libapparmor
+	emake -C "${S}"/utils
+	emake -C "${S}"/parser main docs # avoid running tests
 
 	if use pam; then
 		cd "${S}"/changehat/pam_apparmor ; emake
@@ -59,24 +56,20 @@ src_compile() {
 src_install() {
 	[ -f README ] && dodoc README
 
-	cd "${S}"/libraries/libapparmor
-	emake install DESTDIR="${D}"
+	for i in libraries/libapparmor parser profiles; do
+		emake -C "${S}"/$i install DESTDIR="${D}"
+	done
 
-	cd "${S}"/utils
-	emake install DESTDIR="${D}" PERLDIR="${D}/${VENDOR_ARCH}/Immunix"
-
-	cd "${S}"/parser
-	emake install DESTDIR="${D}"
-
-	cd "${S}"/profiles
-	emake install DESTDIR="${D}"
+	emake -C "${S}"/utils install \
+		DESTDIR="${D}" \
+		PERLDIR="${D}/${VENDOR_ARCH}/Immunix"
 
 	if use pam; then
 		cd "${S}"/changehat/pam_apparmor
 		emake install DESTDIR="${D}"
 	fi
 
-	# Should probably be a LINGUAS variable
+	# NOTE: Should probably be using the LINGUAS variable here
 	if ! use nls; then
 		rm -rf "${D}"/usr/share/locale
 	fi
