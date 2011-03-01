@@ -33,3 +33,7 @@ dev-erlang/faxien-launcher
 # Dean Matzkov <bapabooiee@gmail.com> (21 Feb 2011)
 # Ebuild is frightengly written, and needs testing
 www-servers/yaws
+
+# Dean Matzkov <bapabooiee@gmail.com> (28 Feb 2011)
+# Yet-yet another WiP - probably broken/incorrect
+app-admin/apparmor
