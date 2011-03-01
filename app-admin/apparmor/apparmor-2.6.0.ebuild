@@ -4,7 +4,7 @@
 
 EAPI=4
 
-inherit eutils autotools versionator
+inherit eutils autotools versionator linux-info
 
 MY_VER=$(get_version_component_range 1-2)
 
@@ -15,43 +15,53 @@ SRC_URI="http://launchpad.net/${PN}/${MY_VER}/${PV}/+download/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="nls python ruby"
+IUSE="nls pam perl python ruby"
 
 # TODO: Add deps
 DEPEND=""
 RDEPEND="${DEPEND}"
 
-ARMOR_DIR=${S}/libraries/libapparmor
-UTIL_DIR=${S}/utils
+CONFIG_CHECK="~SECURITY_APPARMOR"
+
+# TODO: Figure out how to avoid all this boilerplate code
 
 src_prepare() {
-	cd "${ARMOR_DIR}"
+	cd "${S}"/libraries/libapparmor
 	eautoreconf
 }
 
 src_configure() {
-	cd "${ARMOR_DIR}"
-
-	# Perl makes the build explode; will fix later
+	cd "${S}"/libraries/libapparmor
 	econf \
-		--without-perl
+		$(use_with perl) \
 		$(use_with python) \
-		$(use_with ruby) \
-		#$(use_with perl)
+		$(use_with ruby)
 }
 
 src_compile() {
-	cd "${ARMOR_DIR}"
-	emake
+	cd "${S}"/libraries/libapparmor ; emake
+	cd "${S}"/utils ; emake
+
+	if use pam; then
+		cd "${S}"/changehat/pam_apparmor ; emake
+	fi
 }
 
 src_install() {
-	cd "${ARMOR_DIR}"
-	make install DESTDIR="${D}"
+	dodoc README
 
-	cd "${UTIL_DIR}"
-	make install DESTDIR="${D}"
+	cd "${S}"/libraries/libapparmor
+	emake install DESTDIR="${D}"
 
+	cd "${S}"/utils
+	emake install DESTDIR="${D}"
+
+	if use pam; then
+		cd "${S}"/changehat/pam_apparmor
+		emake install DESTDIR="${D}"
+	fi
+
+	# Should probably be a LINGUAS variable
 	if ! use nls; then
 		rm -rf "${D}"/usr/share/locale
 	fi
