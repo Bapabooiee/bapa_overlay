@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=3
+EAPI=4
 
 MY_P=imgur-${PV}
 
@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/tthurman/imgur-integration"
 LICENSE="GPL-3"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="eog"
 
 RDEPEND="sys-apps/dbus
@@ -56,6 +56,11 @@ src_configure() {
 src_install() {
 	emake install DESTDIR="${D}" || die "emake failed"
 	dodoc AUTHORS NEWS README || die "dodoc failed"
+
+	# imgur.conf is currently not used; make it an example file
+	mv "${D}"/etc/xdg/imgur/imgur.conf "${D}"/usr/share/doc/${PF}/imgur.conf.example \
+		|| die "moving imgur.conf failed"
+	rm -rf "${D}"/etc/xdg/imgur
 }
 
 pkg_postinst() {

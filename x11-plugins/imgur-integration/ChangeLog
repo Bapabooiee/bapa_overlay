@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  28 Mar 2011; Dean Matzkov <bapabooiee@gmail.com>
+  imgur-integration-9999.ebuild:
+  Tested on x86. Made imgur.conf an example fle. Bumped to EAPI4.
+
   08 Feb 2011; Dean Matzkov <bapabooiee@gmail.com>
   imgur-integration-9999.ebuild:
   Updated bleeding-edge ebuild.
