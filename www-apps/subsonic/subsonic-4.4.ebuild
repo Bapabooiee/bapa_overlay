@@ -28,16 +28,25 @@ S=${WORKDIR}
 pkg_setup() {
 	java-pkg-2_pkg_setup
 
+	if ! hasq userpriv "${FEATURES}" || ! hasq usersandbox "${FEATURES}"; then
+		eerror "Due to the sad state of Maven in Portage, you *must* set"
+		eerror "\"userpriv\" and \"usersandbox\" in FEATURES in order for"
+		eerror "this ebuild to work."
+		eerror
+		eerror "See FEATURES in man(5) make.conf."
+		eerror
+
+		die "userpriv and usersandbox must be set in FEATURES"
+	fi
+
 	echo
+	ewarn
 	ewarn "If this is your first time emerging ${PN}, you"
 	ewarn "might have to wait for Maven to download some extra"
 	ewarn "support files."
 	ewarn
 	ewarn "It could take a while, so please be patient."
-	echo
-	ewarn "And due to the sad state of Maven in Portage, you will also"
-	ewarn "need to set \"userpriv usersandbox\" in FEATURES in order"
-	ewarn "for the build to work. See FEATURES in man(5) make.conf."
+	ewarn
 	echo
 }
 
@@ -48,7 +57,7 @@ src_compile() {
 src_install() {
 	cd subsonic-main
 
-	java-pkg_dowar target/subsonic.war
+	java-pkg_dowar target/${PN}.war
 
 	dodoc README.TXT || die "dodoc failed"
 	newdoc "Getting Started.html" getting_started.html || die "newdoc failed"
