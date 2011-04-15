@@ -6,10 +6,12 @@ EAPI=3
 
 USE_RUBY="ruby18"
 
+BOORU_REPO="svn://donmai.us/danbooru"
+
 if [[ ${PV} == "9999" ]]; then
-	ESVN_REPO_URI="svn://donmai.us/danbooru/trunk"
+	ESVN_REPO_URI="${BOORU_REPO}/trunk"
 else
-	ESVN_REPO_URI="svn://donmai.us/danbooru/tags/${P}"
+	ESVN_REPO_URI="${BOORU_REPO}/tags/${P}"
 fi
 
 inherit eutils multilib subversion webapp
@@ -21,9 +23,6 @@ SRC_URI=""
 LICENSE="as-is"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-
-DEPEND=""
-RDEPEND="${DEPEND}"
 
 myresizer=danbooru_image_resizer
 myresizerlib=lib/${myresizer}/${myresizer}.so
@@ -66,8 +65,8 @@ src_install() {
 	webapp_src_preinst
 
 	dodoc INSTALL{,.debian,.freebsd} || die "dodoc failed"
-	install_examples
 
+	install_examples
 	install_resizer
 
 	insinto "${MY_HTDOCSDIR}"
