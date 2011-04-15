@@ -79,10 +79,11 @@ src_install() {
 		public \
 		script \
 		vendor \
+		tmp \
+		log \
 		Rakefile || die "doins failed"
 
-
-	webapp_serverowned -R "${MY_HTDOCSDIR}"/public/data
+	webapp_serverowned -R "${MY_HTDOCSDIR}"/{tmp,log,public/data}
 	webapp_configfile "${MY_HTDOCSDIR}"/config
 	webapp_sqlscript postgres "${D}/${MY_HTDOCSDIR}"/db/postgres.sql
 
