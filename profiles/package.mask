@@ -14,10 +14,6 @@ x11-plugins/launchy
 # Still very-much a work-in-progress
 www-apps/danbooru
 
-# Dean Matzkov <bapabooiee@gmail.com> (09 Feb 2011)
-# A work-in-progress
-www-apps/subsonic
-
 # Dean Matzkov <bapabooiee@gmail.com> (14 Feb 2011)
 # Masked for testing / WiP
 dev-util/phpsh
