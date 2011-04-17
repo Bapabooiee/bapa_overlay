@@ -1,0 +1,8 @@
+# If you anticipate lots of concurrent connections, up the ulimit (from the usual 1024):
+RC_ULIMIT="-n 16384"
+
+# The rest of this file is verbatim cassandra-supplied code
+# for setting JVM_OPTS
+
+###########################################################
+
