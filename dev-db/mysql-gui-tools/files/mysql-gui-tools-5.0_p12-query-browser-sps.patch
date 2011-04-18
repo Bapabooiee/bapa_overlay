@@ -1,0 +1,13 @@
+--- mysql-gui-tools/mysql-query-browser/source/linux/MQQueryDispatcher.cc
++++ mysql-gui-tools/mysql-query-browser/source/linux/MQQueryDispatcher.cc
+@@ -558,8 +558,8 @@
+ 
+   Gtk::Main::instance()->run();
+ 
+-  while(!req->is_complete())
+-    ;
++//  while(!req->is_complete())
++//    ;
+ 
+   return sps;
+ }

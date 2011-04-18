@@ -1,0 +1,10 @@
+--- mysql-query-browser/configure.in.~1~	2009-12-07 20:30:05.870570830 +0100
++++ mysql-query-browser/configure.in	2009-12-07 20:54:57.009820684 +0100
+@@ -72,6 +72,7 @@
+ 
+ PKG_CHECK_MODULES(GNOME, [libglade-2.0
+ 			gthread-2.0
++			libgnome-2.0
+ 			libxml-2.0 >= 2.6.2
+                         $gtkhtml
+                         gtkmm-2.4])

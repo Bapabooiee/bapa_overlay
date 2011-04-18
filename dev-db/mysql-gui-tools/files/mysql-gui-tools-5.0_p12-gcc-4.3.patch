@@ -1,0 +1,36 @@
+Index: mysql-gui-common/source/linux/MGFileBrowserList.cc
+===================================================================
+--- mysql-gui-common/source/linux/MGFileBrowserList.cc	(revision 2059)
++++ mysql-gui-common/source/linux/MGFileBrowserList.cc	(working copy)
+@@ -20,6 +20,7 @@
+ #include <unistd.h>
+ #include <sys/stat.h>
+ #include <errno.h>
++#include <string.h>
+ #include <stdio.h> /* rename() in FreeBSD */
+ 
+ 
+Index: mysql-gui-common/source/linux/MGHMeterGraphPlotter.cc
+===================================================================
+--- mysql-gui-common/source/linux/MGHMeterGraphPlotter.cc	(revision 2059)
++++ mysql-gui-common/source/linux/MGHMeterGraphPlotter.cc	(working copy)
+@@ -16,6 +16,7 @@
+ 
+ 
+ #include "MGHMeterGraphPlotter.h"
++#include <string.h>
+ 
+ 
+ 
+Index: mysql-query-browser/source/linux/MGCodeEditor.cc
+===================================================================
+--- mysql-query-browser/source/linux/MGCodeEditor.cc	(revision 476)
++++ mysql-query-browser/source/linux/MGCodeEditor.cc	(working copy)
+@@ -16,6 +16,7 @@
+ 
+ #include "MGCodeEditor.h"
+ 
++#include <string.h>
+ #include <gtksourceview/gtksourcelanguagesmanager.h>
+ 
+ 

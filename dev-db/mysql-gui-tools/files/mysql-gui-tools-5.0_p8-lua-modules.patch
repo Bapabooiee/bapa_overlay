@@ -1,0 +1,20 @@
+Index: mysql-gui-common/source/linux/MySQLGRT/MGRT.cc
+===================================================================
+--- mysql-gui-common/source/linux/MySQLGRT/MGRT.cc	(revision 1861)
++++ mysql-gui-common/source/linux/MySQLGRT/MGRT.cc	(working copy)
+@@ -284,6 +284,7 @@
+   flush_messages();
+ #endif
+ 
++#ifdef ENABLE_LUA_MODULES
+   // lua modules
+   out_text("Loading Lua modules...");
+   loader= myx_lua_init_loader(_grt, &error, std::string(resourcePath+"/lua").c_str());
+@@ -303,6 +304,7 @@
+   else
+     out_text(ufmt("Error initializing Lua module loader (%i)\n",error));
+   flush_messages();
++#endif
+ 
+   // builtin c++
+   out_text("Initializing C++ loader...");
