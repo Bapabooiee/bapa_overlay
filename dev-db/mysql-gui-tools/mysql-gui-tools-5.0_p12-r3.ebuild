@@ -65,7 +65,8 @@ src_unpack() {
 		"${FILESDIR}"/${P}-libsigc++-2.2.patch \
 		"${FILESDIR}"/${P}-gcc-4.3.patch \
 		"${FILESDIR}"/${P}-deprecated-gtk+-api.patch \
-		"${FILESDIR}"/${P}-gnome-2.28.patch
+		"${FILESDIR}"/${P}-gnome-2.28.patch \
+		"${FILESDIR}"/${P}-gtk-widgetstate.patch
 
 	sed -i \
 		-e "s/\\(^\\|[[:space:]]\\)-ltermcap\\($\\|[[:space:]]\\)/ /g" \
