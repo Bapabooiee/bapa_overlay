@@ -1,4 +1,4 @@
-EAPI=2
+EAPI=3
 
 CMAKE_IN_SOURCE_BUILD="Non Facet Nobis"
 
@@ -17,9 +17,7 @@ KEYWORDS="amd64 x86"
 
 IUSE=""
 
-DEPEND="dev-util/cmake"
-
-src_install() { 
+src_install() {
 	newgamesbin flatWorld ${PN} || die "newbin failed"
 	dodoc README || die "dodoc failed"
 }

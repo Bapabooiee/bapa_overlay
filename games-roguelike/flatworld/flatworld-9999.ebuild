@@ -1,4 +1,4 @@
-EAPI=2
+EAPI=3
 
 CMAKE_IN_SOURCE_BUILD="Non Facet Nobis"
 EGIT_REPO_URI="https://github.com/miniBill/flatWorld.git"
@@ -16,9 +16,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="media-libs/libcaca[ncurses]"
-DEPEND="${RDEPEND} dev-util/cmake"
+DEPEND="${RDEPEND}"
 
-src_install() { 
+src_install() {
 	newgamesbin flatWorld ${PN} || die "newbin failed"
 	dodoc README || die "dodoc failed"
 }
