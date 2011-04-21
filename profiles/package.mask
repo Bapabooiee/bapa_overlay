@@ -23,10 +23,6 @@ dev-util/phpsh
 dev-util/google-web-toolkit
 
 # Dean Matzkov <bapabooiee@gmail.com> (21 Feb 2011)
-# Mostly un-tested
-dev-erlang/faxien-launcher
-
-# Dean Matzkov <bapabooiee@gmail.com> (21 Feb 2011)
 # Ebuild is frightengly written, and needs testing
 www-servers/yaws
 
