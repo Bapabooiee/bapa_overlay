@@ -14,7 +14,7 @@ SRC_URI="http://releases.mozilla.org/pub/mozilla.org/addons/2410/${MY_P}.xpi"
 
 LICENSE="CCPL-Attribution-ShareAlike-3.0"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="|| (
