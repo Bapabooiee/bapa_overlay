@@ -43,6 +43,9 @@ HTTP_EY_BALANCER_MODULE_SHA1="d373670"
 HTTP_SLOWFS_CACHE_MODULE_PV="1.5"
 HTTP_SLOWFS_CACHE_MODULE_P="ngx_slowfs_cache-${HTTP_SLOWFS_CACHE_MODULE_PV}"
 
+HTTP_MOGILEFS_MODULE_PV="1.0.4"
+HTTP_MOGILEFS_MODULE_P="nginx_mogilefs_module-${HTTP_MOGILEFS_MODULE_PV}"
+
 inherit eutils ssl-cert toolchain-funcs perl-module flag-o-matic
 
 DESCRIPTION="Robust, small and high performance http and reverse proxy server"
@@ -55,7 +58,8 @@ SRC_URI="http://sysoev.ru/nginx/${P}.tar.gz
 	nginx_modules_http_cache_purge? ( http://labs.frickle.com/files/${HTTP_CACHE_PURGE_MODULE_P}.tar.gz )
 	nginx_modules_http_upload? ( http://www.grid.net.ru/nginx/download/${HTTP_UPLOAD_MODULE_P}.tar.gz )
 	nginx_modules_http_ey_balancer? ( https://github.com/ry/nginx-ey-balancer/tarball/v${HTTP_EY_BALANCER_MODULE_PV} -> ${HTTP_EY_BALANCER_MODULE_P}.tar.gz )
-	nginx_modules_http_slowfs_cache? ( http://labs.frickle.com/files/${HTTP_SLOWFS_CACHE_MODULE_P}.tar.gz )"
+	nginx_modules_http_slowfs_cache? ( http://labs.frickle.com/files/${HTTP_SLOWFS_CACHE_MODULE_P}.tar.gz )
+	nginx_modules_http_mogilefs? ( http://www.grid.net.ru/nginx/download/${HTTP_MOGILEFS_MODULE_P}.tar.gz )"
 
 LICENSE="as-is BSD BSD-2 GPL-2 MIT"
 SLOT="0"
@@ -68,7 +72,7 @@ NGINX_MODULES_OPT="addition dav degradation flv geoip gzip_static image_filter
 perl random_index realip secure_link stub_status sub xslt"
 NGINX_MODULES_MAIL="imap pop3 smtp"
 NGINX_MODULES_3RD="http_cache_purge http_headers_more http_passenger http_push
-http_upload http_ey_balancer http_slowfs_cache"
+http_upload http_ey_balancer http_slowfs_cache http_mogilefs"
 
 IUSE="aio debug +http +http-cache ipv6 libatomic +pcre ssl vim-syntax"
 
@@ -223,6 +227,11 @@ src_configure() {
 		myconf="${myconf} --add-module=${WORKDIR}/${HTTP_SLOWFS_CACHE_MODULE_P}"
 	fi
 
+	if use nginx_modules_http_mogilefs; then
+		http_enabled=1
+		myconf="${myconf} --add-module=${WORKDIR}/${HTTP_MOGILEFS_MODULE_P}"
+	fi
+
 	if use http || use http-cache; then
 		http_enabled=1
 	fi
@@ -331,6 +340,12 @@ src_install() {
 	if use nginx_modules_http_slowfs_cache; then
 		docinto ${HTTP_SLOWFS_CACHE_MODULE_P}
 		dodoc "${WORKDIR}"/${HTTP_SLOWFS_CACHE_MODULE_P}/{CHANGES,README}
+	fi
+
+	if use nginx_modules_http_mogilefs; then
+		docinto ${HTTP_MOGILEFS_MODULE_P}
+		dodoc "${WORKDIR}"/${HTTP_MOGILEFS_MODULE_P}/{Changelog,README}
+		newdoc "${WORKDIR}"/${HTTP_MOGILEFS_MODULE_P}/nginx.conf nginx-mogilefs.conf.example
 	fi
 }
 
