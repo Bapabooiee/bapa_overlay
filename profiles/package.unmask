@@ -1,2 +1,0 @@
-# Override the main Portage tree's package mask
-=virtual/mysql-5.2

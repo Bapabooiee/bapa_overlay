@@ -2,18 +2,6 @@
 # Live version is usually broken
 =x11-plugins/imgur-integration-9999
 
-# Dean Matzkov <bapabooiee@gmail.com> (24 Jan 2011)
-# The bleeding-edge version usually isn't playable
-=games-roguelike/flatworld-9999
-
-# Dean Matzkov <bapabooiee@gmail.com> (08 Feb 2011)
-# Works, but needs testing
-x11-plugins/launchy
-
-# Dean Matzkov <bapabooiee@gmail.com> (08 Feb 2011)
-# Still very-much a work-in-progress
-www-apps/danbooru
-
 # Dean Matzkov <bapabooiee@gmail.com> (14 Feb 2011)
 # Masked for testing / WiP
 dev-util/phpsh
@@ -25,7 +13,3 @@ dev-util/google-web-toolkit
 # Dean Matzkov <bapabooiee@gmail.com> (21 Feb 2011)
 # Ebuild is frightengly written, and needs testing
 www-servers/yaws
-
-# Dean Matzkov <bapabooiee@gmail.com> (28 Feb 2011)
-# Yet-yet another WiP - probably broken/incorrect
-app-admin/apparmor
