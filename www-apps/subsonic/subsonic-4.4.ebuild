@@ -28,16 +28,16 @@ S=${WORKDIR}
 pkg_setup() {
 	java-pkg-2_pkg_setup
 
-	if ! hasq userpriv "${FEATURES}" || ! hasq usersandbox "${FEATURES}"; then
-		eerror "Due to the sad state of Maven in Portage, you *must* set"
-		eerror "\"userpriv\" and \"usersandbox\" in FEATURES in order for"
-		eerror "this ebuild to work."
-		eerror
-		eerror "See FEATURES in man(5) make.conf."
-		eerror
+	#if ! has userpriv "${FEATURES}" || ! has usersandbox "${FEATURES}"; then
+		#eerror "Due to the sad state of Maven in Portage, you *must* set"
+		#eerror "\"userpriv\" and \"usersandbox\" in FEATURES in order for"
+		#eerror "this ebuild to work."
+		#eerror
+		#eerror "See FEATURES in man(5) make.conf."
+		#eerror
 
-		die "userpriv and usersandbox must be set in FEATURES"
-	fi
+		#die "userpriv and usersandbox must be set in FEATURES"
+	#fi
 
 	echo
 	ewarn

@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -23,6 +23,8 @@ SRC_URI=""
 LICENSE="as-is"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+
+RDEPEND="media-libs/gd"
 
 myresizer=danbooru_image_resizer
 myresizerlib=lib/${myresizer}/${myresizer}.so
