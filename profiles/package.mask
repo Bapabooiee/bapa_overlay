@@ -2,10 +2,6 @@
 # Live version is usually broken
 =x11-plugins/imgur-integration-9999
 
-# Dean Matzkov <bapabooiee@gmail.com> (08 Feb 2011)
-# Still very-much a work-in-progress
-www-apps/danbooru
-
 # Dean Matzkov <bapabooiee@gmail.com> (14 Feb 2011)
 # Masked for testing / WiP
 dev-util/phpsh
