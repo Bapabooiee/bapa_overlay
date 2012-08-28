@@ -2,15 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-JAVA_PKG_IUSE="doc"
 EAPI=2
 
+JAVA_PKG_IUSE="doc"
 WANT_ANT_TASKS="ant-nodeps"
+
 inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="A highly scalable second-generation distributed database"
 HOMEPAGE="http://cassandra.apache.org/"
-SRC_URI="mirror://apache/cassandra/${PV}/apache-${P}-src.tar.gz"
+SRC_URI="http://archive.apache.org/dist/cassandra/${PV}/apache-${P}-src.tar.gz"
 S="${WORKDIR}/apache-${P}-src"
 
 LICENSE="Apache-2.0"
