@@ -1,6 +1,15 @@
 # ChangeLog for app-admin/graylog2
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*graylog2-0.9.6 (28 Aug 2012)
+
+  28 Aug 2012; Dean Matzkov <bapabooiee@gmail.com> +graylog2-0.9.6.ebuild,
+  +files/graylog2-0.9.6.initd, -files/graylog2.initd-r1,
+  -graylog2-0.9.4_p1.ebuild, +files/graylog2-0.9.6.confd:
+  Version bump. Changes include installing a conf.d file and adding a
+  post-install message that informs users about Graylog2 moving to
+  ElasticSearch.
 
   10 Feb 2011; Dean Matzkov <bapabooiee@gmail.com> -files/graylog2.confd,
   -graylog2-0.9.3.ebuild, -graylog2-0.9.3-r1.ebuild, -graylog2-0.9.4.ebuild,
