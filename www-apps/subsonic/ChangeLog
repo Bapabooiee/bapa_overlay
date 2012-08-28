@@ -1,6 +1,11 @@
 # ChangeLog for www-apps/subsonic
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*subsonic-4.6 (28 Aug 2012)
+
+  28 Aug 2012; Dean Matzkov <bapabooiee@gmail.com> +subsonic-4.6.ebuild:
+  Version bump.
 
   15 Apr 2011; Dean Matzkov <bapabooiee@gmail.com> subsonic-4.4.ebuild:
   userpriv and usersandbox in FEATURES is now properly checked.
