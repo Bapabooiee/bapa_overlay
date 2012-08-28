@@ -77,7 +77,7 @@ HTTP_LUA_MODULE_WD="${WORKDIR}/chaoslawful-lua-nginx-module-${HTTP_LUA_MODULE_SH
 
 # http_mogilefs (http://www.grid.net.ru/nginx/mogilefs.en.html, BSD license)
 HTTP_MOGILEFS_MODULE_PV="1.0.4"
-HTTP_MOGILEFS_MODULE_P="nginx_mogilefs_module-${HTTP_MOGILEFS_MODULE_PV}"
+HTTP_MOGILEFS_MODULE_P="ngx_http_mogilefs-${HTTP_MOGILEFS_MODULE_PV}"
 HTTP_MOGILEFS_MODULE_URI="http://www.grid.net.ru/nginx/download/nginx_mogilefs_module-${HTTP_MOGILEFS_MODULE_PV}.tar.gz"
 HTTP_MOGILEFS_MODULE_WD="${WORKDIR}/nginx_mogilefs_module-${HTTP_MOGILEFS_MODULE_PV}"
 
