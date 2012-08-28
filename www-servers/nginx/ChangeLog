@@ -1,0 +1,7 @@
+# ChangeLog for www-servers/nginx
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  28 Aug 2012; Dean Matzkov <bapabooiee@gmail.com> nginx-1.3.3.ebuild:
+  Version bump, with MogileFS patches applied to ebuild.
+

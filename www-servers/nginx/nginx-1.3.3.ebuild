@@ -75,6 +75,12 @@ HTTP_LUA_MODULE_SHA1="db0bebe"
 HTTP_LUA_MODULE_URI="https://github.com/chaoslawful/lua-nginx-module/tarball/v${HTTP_LUA_MODULE_PV}"
 HTTP_LUA_MODULE_WD="${WORKDIR}/chaoslawful-lua-nginx-module-${HTTP_LUA_MODULE_SHA1}"
 
+# http_mogilefs (http://www.grid.net.ru/nginx/mogilefs.en.html, BSD license)
+HTTP_MOGILEFS_MODULE_PV="1.0.4"
+HTTP_MOGILEFS_MODULE_P="nginx_mogilefs_module-${HTTP_MOGILEFS_MODULE_PV}"
+HTTP_MOGILEFS_MODULE_URI="http://www.grid.net.ru/nginx/download/nginx_mogilefs_module-${HTTP_MOGILEFS_MODULE_PV}.tar.gz"
+HTTP_MOGILEFS_MODULE_WD="${WORKDIR}/nginx_mogilefs_module-${HTTP_MOGILEFS_MODULE_PV}"
+
 inherit eutils ssl-cert toolchain-funcs perl-module flag-o-matic user
 
 DESCRIPTION="Robust, small and high performance http and reverse proxy server"
@@ -88,7 +94,8 @@ SRC_URI="http://nginx.org/download/${P}.tar.gz
 	nginx_modules_http_upload? ( ${HTTP_UPLOAD_MODULE_URI} )
 	nginx_modules_http_slowfs_cache? ( ${HTTP_SLOWFS_CACHE_MODULE_URI} )
 	nginx_modules_http_fancyindex? ( ${HTTP_FANCYINDEX_MODULE_URI} -> ${HTTP_FANCYINDEX_MODULE_P}.tar.gz )
-	nginx_modules_http_lua? ( ${HTTP_LUA_MODULE_URI} -> ${HTTP_LUA_MODULE_P}.tar.gz )"
+	nginx_modules_http_lua? ( ${HTTP_LUA_MODULE_URI} -> ${HTTP_LUA_MODULE_P}.tar.gz )
+	nginx_modules_http_mogilefs? ( ${HTTP_MOGILEFS_MODULE_URI} )"
 
 LICENSE="as-is BSD BSD-2 GPL-2 MIT"
 SLOT="0"
@@ -109,7 +116,8 @@ NGINX_MODULES_3RD="
 	http_upload
 	http_slowfs_cache
 	http_fancyindex
-	http_lua"
+	http_lua
+	http_mogilefs"
 
 IUSE="aio debug +http +http-cache ipv6 libatomic +pcre pcre-jit selinux ssl vim-syntax"
 
@@ -274,6 +282,11 @@ src_configure() {
 		myconf+=" --add-module=${HTTP_LUA_MODULE_WD}"
 	fi
 
+	if use nginx_modules_http_mogilefs; then
+		http_enabled=1
+		myconf+=" --add-module=${HTTP_MOGILEFS_MODULE_WD}"
+	fi
+
 	if use http || use http-cache; then
 		http_enabled=1
 	fi
@@ -385,6 +398,12 @@ src_install() {
 	if use nginx_modules_http_lua; then
 		docinto ${HTTP_LUA_MODULE_P}
 		dodoc "${HTTP_LUA_MODULE_WD}"/{Changes,README.markdown}
+	fi
+
+	if use nginx_modules_http_mogilefs; then
+		docinto ${HTTP_MOGILEFS_MODULE_P}
+		dodoc "${HTTP_MOGILEFS_MODULE_WD}"/{Changelog,README}
+		newdoc "${HTTP_MOGILEFS_MODULE_WD}"/nginx.conf nginx-mogilefs.conf.example
 	fi
 }
 
