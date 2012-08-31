@@ -1,8 +1,8 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=3
+EAPI=4
 
 EGIT_REPO_URI="https://github.com/facebook/${PN}.git"
 if [[ ${PV} != "9999" ]]; then
@@ -19,7 +19,7 @@ HOMEPAGE="http://www.phpsh.org/"
 
 LICENSE="phpsh LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="+pcntl"
 
 DEPEND=""
