@@ -2,6 +2,7 @@ app-admin
 dev-db
 dev-erlang
 dev-util
+net-im
 sys-fs
 www-apps
 www-servers
