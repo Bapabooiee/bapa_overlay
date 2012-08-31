@@ -1,4 +1,4 @@
-EAPI=3
+EAPI=4
 
 inherit eutils java-utils-2
 
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc examples"
 
-# TODO: Add actual deps here
+RDEPEND=">=virtual/jre-1.5"
 
 S=${WORKDIR}/${MY_P}
 

@@ -6,10 +6,6 @@
 # Not guaranteed to be stable or work
 =dev-util/phpsh-9999
 
-# Dean Matzkov <bapabooiee@gmail.com> (16 Feb 2011)
-# Yet another ebuild that's a work-in-progress
-dev-util/google-web-toolkit
-
 # Dean Matzkov <bapabooiee@gmail.com> (21 Feb 2011)
 # Ebuild is frightengly written, and needs testing
 www-servers/yaws
