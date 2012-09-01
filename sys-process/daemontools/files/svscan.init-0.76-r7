@@ -1,5 +1,5 @@
 #!/sbin/runscript
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/sys-process/daemontools/files/svscan.init-0.76-r7,v 1.1 2008/12/07 06:59:37 robbat2 Exp $
 
@@ -9,10 +9,10 @@ depend() {
 }
 
 start() {
-	ebegin "Starting service scan"
+	ebegin "Starting service scan (${SVSCAN_BASE})"
 	setsid start-stop-daemon --start --exec /usr/bin/svscan \
 		--background --make-pidfile \
-		--pidfile /var/run/svscan.pid -- /service
+		--pidfile /var/run/svscan.pid -- "${SVSCAN_BASE}"
 	eend $?
 }
 
@@ -23,10 +23,12 @@ stop() {
 	eend $?
 
 	ebegin "Stopping service scan services"
-	svc -dx /service/* 2>/dev/null
+	einfo "    (svc -dx ${SVSCAN_BASE}/*)"
+	svc -dx "${SVSCAN_BASE}"/* 2>/dev/null
 	eend $?
 
 	ebegin "Stopping service scan logging"
-	svc -dx /service/*/log 2>/dev/null
+	einfo "    (svc -dx ${SVSCAN_BASE}/*/log)"
+	svc -dx "${SVSCAN_BASE}"/*/log 2>/dev/null
 	eend $?
 }

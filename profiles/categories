@@ -4,6 +4,7 @@ dev-erlang
 dev-util
 net-im
 sys-fs
+sys-process
 www-apps
 www-servers
 x11-plugins

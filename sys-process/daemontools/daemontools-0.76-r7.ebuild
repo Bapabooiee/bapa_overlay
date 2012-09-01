@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/sys-process/daemontools/daemontools-0.76-r7.ebuild,v 1.8 2011/07/11 15:26:11 aballier Exp $
 
@@ -38,13 +38,15 @@ src_compile() {
 }
 
 src_install() {
-	keepdir /service
+	keepdir /var/service
+	#dosym /var/service /service
 
 	dobin $(<../package/commands) || die
 	dodoc CHANGES ../package/README TODO
 	doman "${WORKDIR}"/${PN}-man/*.8
 
 	newinitd "${FILESDIR}"/svscan.init-0.76-r7 svscan
+	newconfd "${FILESDIR}"/svscan.confd svscan
 }
 
 pkg_postinst() {
