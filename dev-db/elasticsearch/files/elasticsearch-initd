@@ -1,0 +1,30 @@
+#!/sbin/runscript
+
+ESEARCH_PID=/var/run/elasticsearch/elasticsearch.pid
+
+depend() {
+	after logger
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+
+	# NOTE: After the process launches, sometimes
+	# it spams STDERR with warnings after it 
+	# detaches.
+	start-stop-daemon --start \
+		--user elasticsearch:elasticsearch \
+		--pidfile ${ESEARCH_PID} \
+		--exec /opt/bin/elasticsearch -- \
+			-p ${ESEARCH_PID}
+	
+	eend $? || return 1
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop \
+		--pidfile ${ESEARCH_PID}
+	
+	eend $?
+}

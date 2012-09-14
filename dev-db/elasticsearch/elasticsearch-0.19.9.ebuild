@@ -50,5 +50,7 @@ src_install() {
 	dosym /var/lib/${PN} ${ROOT_DIR}/data
 	dosym /var/log/${PN} ${ROOT_DIR}/logs
 
-	# TODO: Add /etc/logrodate.d entry
+	newinitd "${FILESDIR}"/${PN}-initd elasticsearch
+
+	# TODO: Add /etc/logrotate.d entry
 }
