@@ -42,10 +42,9 @@ src_install() {
 		keepdir /var/${i}/${PN}
 		fowners elasticsearch:elasticsearch /var/${i}/${PN}
 	done
-	
-	#keepdir /run/${PN}
-	#fowners elasticsearch:elasticsearch /run/${PN}
 
+	fperms 750 /var/{lib,log}/${PN}
+	
 	dosym /etc/${PN} ${ROOT_DIR}/config
 	dosym /var/lib/${PN} ${ROOT_DIR}/data
 	dosym /var/log/${PN} ${ROOT_DIR}/logs

@@ -2,10 +2,6 @@
 
 ESEARCH_PID=/var/run/elasticsearch/elasticsearch.pid
 
-depend() {
-	after logger
-}
-
 start() {
 	ebegin "Starting ${SVCNAME}"
 
