@@ -4,13 +4,8 @@ ESEARCH_PID=/var/run/elasticsearch/elasticsearch.pid
 
 start() {
 	ebegin "Starting ${SVCNAME}"
-
-	# NOTE: After the process launches, sometimes
-	# it spams STDERR with warnings after it 
-	# detaches.
-	start-stop-daemon --start \
+	start-stop-daemon --start --quiet \
 		--user elasticsearch:elasticsearch \
-		--pidfile ${ESEARCH_PID} \
 		--exec /opt/bin/elasticsearch -- \
 			-p ${ESEARCH_PID}
 	

@@ -27,11 +27,10 @@ src_install() {
 
 	doins -r lib
 	doexe bin/*
+	make_wrapper ${PN} /opt/${PN}/bin/${PN} "" "" /opt/bin
 
 	insinto /etc/${PN}
 	doins config/*
-
-	make_wrapper ${PN} /opt/${PN}/bin/${PN} "" "" /opt/bin
 
 	#cat > 99${PN} <<-EOF
 		#CONFIG_PROTECT="/opt/${PN}/config"
@@ -43,7 +42,7 @@ src_install() {
 		fowners elasticsearch:elasticsearch /var/${i}/${PN}
 	done
 
-	fperms 750 /var/{lib,log}/${PN}
+	fperms 750 /etc/${PN} /var/{lib,log}/${PN}
 	
 	dosym /etc/${PN} ${ROOT_DIR}/config
 	dosym /var/lib/${PN} ${ROOT_DIR}/data
