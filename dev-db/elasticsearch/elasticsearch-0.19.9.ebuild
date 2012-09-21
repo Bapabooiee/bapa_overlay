@@ -22,18 +22,18 @@ pkg_setup() {
 }
 
 src_install() {
-	insinto /opt/${PN}
-	exeinto /opt/${PN}/bin
+	insinto ${ROOT_DIR}
+	exeinto ${ROOT_DIR}/bin
 
 	doins -r lib
 	doexe bin/*
-	make_wrapper ${PN} /opt/${PN}/bin/${PN} "" "" /opt/bin
+	make_wrapper ${PN} ${ROOT_DIR}/bin/${PN} "" "" /opt/bin
 
 	insinto /etc/${PN}
 	doins config/*
 
 	#cat > 99${PN} <<-EOF
-		#CONFIG_PROTECT="/opt/${PN}/config"
+		#CONFIG_PROTECT="${ROOT_DIR}/config"
 	#EOF
 	#doenvd 99${PN} 99${PN}
 
@@ -48,7 +48,7 @@ src_install() {
 	dosym /var/lib/${PN} ${ROOT_DIR}/data
 	dosym /var/log/${PN} ${ROOT_DIR}/logs
 
-	newinitd "${FILESDIR}"/${PN}-initd elasticsearch
+	newinitd "${FILESDIR}"/${PN}-initd ${PN}
 
 	# TODO: Add /etc/logrotate.d entry
 }
