@@ -21,6 +21,10 @@ pkg_setup() {
 	enewuser elasticsearch 764  -1 /dev/null elasticsearch
 }
 
+src_prepare() {
+	rm -f "${S}"/lib/sigar/*{freebsd,macosx,solaris,winnt,ia64}* > /dev/null 2>&1
+}
+
 src_install() {
 	insinto ${ROOT_DIR}
 	exeinto ${ROOT_DIR}/bin
