@@ -44,5 +44,7 @@ src_prepare() {
 
 src_install() {
 	emake DESTDIR="${D}" install || die "install failed"
-	dodoc README NEWS || die "install documentation failed"
+
+	dodoc README NEWS test.sql || die "install documentation failed"
+	dohtml README.html
 }
