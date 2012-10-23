@@ -1,3 +1,10 @@
+# Dean Matzkov <bapabooiee@gmail.com> (23 Oct 2012)
+# Works absolutely fine, but I'd prefer to unmask
+# it when/if I modify it to install cleanly into
+# the system's dirs (/etc, /usr, /var/{lib,log}, et all)
+# rather than stuffing everything into /opt.
+net-analyzer/nagiosgraph
+
 # Dean Matzkov <bapabooiee@gmail.com> (20 Jan 2011)
 # Live version is usually broken
 =x11-plugins/imgur-integration-9999
