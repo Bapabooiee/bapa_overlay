@@ -5,10 +5,6 @@
 # rather than stuffing everything into /opt.
 net-analyzer/nagiosgraph
 
-# Dean Matzkov <bapabooiee@gmail.com> (20 Jan 2011)
-# Live version is usually broken
-=x11-plugins/imgur-integration-9999
-
 # Dean Matzkov <bapabooiee@gmail.com> (14 Feb 2011)
 # Not guaranteed to be stable or work
 =dev-util/phpsh-9999
