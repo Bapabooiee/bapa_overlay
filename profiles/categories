@@ -3,8 +3,6 @@ dev-db
 dev-erlang
 dev-util
 net-analyzer
-net-im
 sys-fs
-sys-process
 www-apps
 www-servers

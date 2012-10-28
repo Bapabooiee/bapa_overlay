@@ -1,9 +1,0 @@
-# ChangeLog for sys-process/daemontools
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
-
-  01 Sep 2012; Dean Matzkov <bapabooiee@gmail.com> files/svscan.init-0.76-r7,
-  daemontools-0.76-r7.ebuild, +files/svscan.confd:
-  Added customizable basedir via a conf.d file, which defaults to /var/service
-  now; and the init script is more verbose.
-
