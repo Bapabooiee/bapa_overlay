@@ -2,8 +2,7 @@ EAPI=4
 
 inherit eutils java-utils-2
 
-MY_RC=.rc1
-MY_P=gwt-${PV/_rc[0-9]/}${MY_RC}
+MY_P=gwt-${PV}
 
 DESCRIPTION="Development toolkit for building and optimizing complex browser-based applications"
 HOMEPAGE="http://code.google.com/webtoolkit/"
@@ -27,15 +26,15 @@ src_install() {
 	exeinto /opt/${PN}
 
 	for i in $files; do
-		doins $i || die "doins $i failed"
+		doins $i
 	done
 
 	for i in $exes; do
-		doexe $i || die "doexe $i failed"
-		make_wrapper $i /opt/${PN}/$i "" "" /opt/bin || die "make_wrapper $i failed"
+		doexe $i
+		make_wrapper $i /opt/${PN}/$i "" "" /opt/bin
 	done
 
-	dodoc about.{txt,html} release_notes.html || die "dodoc failed"
+	dodoc about.{txt,html} release_notes.html
 
 	if use doc; then
 		java-pkg_dojavadoc doc/javadoc
@@ -44,6 +43,6 @@ src_install() {
 	# TODO: Compile examples, rather than using the distributed class files
 	if use examples; then
 		insinto /usr/share/doc/${PF}
-		doins -r samples || die "installing samples failed"
+		doins -r samples
 	fi
 }
