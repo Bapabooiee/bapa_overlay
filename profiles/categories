@@ -1,6 +1,7 @@
 app-admin
 dev-db
 dev-erlang
+dev-python
 dev-util
 net-analyzer
 sys-fs

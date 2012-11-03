@@ -1,3 +1,7 @@
+# Dean Matzkov <bapabooiee@gmail.com> (3 Nov 2012)
+# Still a work-in-progress.
+dev-python/neo4j-embedded
+
 # Dean Matzkov <bapabooiee@gmail.com> (23 Oct 2012)
 # Works absolutely fine, but I'd prefer to unmask
 # it when/if I modify it to install cleanly into
