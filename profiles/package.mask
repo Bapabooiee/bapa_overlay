@@ -12,7 +12,3 @@ net-analyzer/nagiosgraph
 # Dean Matzkov <bapabooiee@gmail.com> (14 Feb 2011)
 # Not guaranteed to be stable or work
 =dev-util/phpsh-9999
-
-# Dean Matzkov <bapabooiee@gmail.com> (21 Feb 2011)
-# Ebuild is frightengly written, and needs testing
-www-servers/yaws
