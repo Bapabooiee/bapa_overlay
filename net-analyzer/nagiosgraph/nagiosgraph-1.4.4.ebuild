@@ -1,7 +1,3 @@
-# Copyright 1999-2012 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: $
-
 EAPI=4
 
 inherit eutils
@@ -20,7 +16,7 @@ src_install() {
 	dodir /opt/${PN}
 
 	insinto /opt/${PN}
-	doins -r etc lib share
+	doins -r lib share
 
 	exeinto /opt/${PN}/lib ; doexe lib/*
 	exeinto /opt/${PN}/cgi ; doexe cgi/*
@@ -31,4 +27,10 @@ src_install() {
 	doenvd "${T}"/50${PN}
 
 	dodoc -r AUTHORS CHANGELOG INSTALL README TODO examples
+
+	dodir /etc/opt/${PN}
+	insinto /etc/opt/${PN}
+	doins -r etc/*
+
+	dosym /etc/opt/${PN} /opt/${PN}/etc
 }
