@@ -1,0 +1,7 @@
+# ChangeLog for dev-db/pgmemcache
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  17 Oct 2012; Dean Matzkov <bapabooiee@gmail.com> pgmemcache-2.0.6.ebuild:
+  Remove and add some '|| die' calls around. Also added a couple comments.
+

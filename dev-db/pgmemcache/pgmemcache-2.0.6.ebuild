@@ -30,21 +30,23 @@ src_prepare() {
 		relocatable = true
 	END
 
+	# Remove the search_path, since we want to be relocatable.
 	sed -i ${PN}.sql.in \
 		-e '/^SET search_path/s/^/--/' \
 		-e "s/'C'/C/" || die "sed failed"
 
-	mv ${PN}.sql.in ${PN}--1.0.sql
+	mv ${PN}.sql.in ${PN}--1.0.sql || die "mv failed"
 
+	# Tell Makefile we're packaging an extension.
 	sed -i \
-		-e "1i EXTENSION = ${PN}" Makefile \
+		-e "1i EXTENSION = ${PN}" \
 		-e 's/$(MODULE_big).sql/$(MODULE_big)--1.0.sql/' \
-		-e 's/DATA_built/DATA/' || die "sed failed"
+		-e 's/DATA_built/DATA/' Makefile || die "sed failed"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "install failed"
+	emake DESTDIR="${D}" install
 
-	dodoc README NEWS test.sql || die "install documentation failed"
+	dodoc README NEWS test.sql
 	dohtml README.html
 }
