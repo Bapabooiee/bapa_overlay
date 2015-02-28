@@ -3,6 +3,7 @@ dev-db
 dev-erlang
 dev-php
 dev-python
+dev-ruby
 dev-util
 net-analyzer
 sys-fs

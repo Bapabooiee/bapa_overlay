@@ -12,3 +12,14 @@ net-analyzer/nagiosgraph
 # Dean Matzkov <bapabooiee@gmail.com> (14 Feb 2011)
 # Not guaranteed to be stable or work
 =dev-util/phpsh-9999
+
+# Dean Matzkov <bapabooiee@gmail.com> (04 Sep 2012)
+# Still very ugly works-in-progress. Though they are usable.
+# Feel free to unmask.
+dev-ruby/data_mapper
+dev-ruby/data_objects
+dev-ruby/do_sqlite3
+dev-ruby/do_postgres
+dev-ruby/do_mysql
+dev-ruby/json_pure
+dev-ruby/spruz
